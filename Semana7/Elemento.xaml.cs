@@ -31,7 +31,7 @@ namespace Semana7
 
         public static IEnumerable<Estudiante> Update(SQLiteConnection db, string nombre, string usuario, string contrasenia, int id)
         {
-            return db.Query<Estudiante>("UPDATE Estudiante SET Nombre =?, Usuario=?, Contrasenia =? where Id =?", nombre, usuario, contrasenia, id);
+            return db.Query<Estudiante>("UPDATE Estudiante SET Nombre =?, Usuario=?, Password =? where Id =?", nombre, usuario, contrasenia, id);
         }
 
         private void btnActualizar_Clicked(object sender, EventArgs e)
@@ -40,7 +40,7 @@ namespace Semana7
             {
                 var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "semana7.db3");
                 var db = new SQLiteConnection(databasePath);
-                Update1 = Update(db, txtNombre.Text, txtUsuario.Text, txtContrasenia.Text, idSeleccionado);
+                Delete1 = Update(db, txtNombre.Text, txtUsuario.Text, txtContrasenia.Text, idSeleccionado);
                 DisplayAlert("Alerta", "Se actualizo correctamente", "ok");
             }
             catch (Exception ex)
